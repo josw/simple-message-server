@@ -25,7 +25,7 @@
 		
 		
 		$(function() {
-			$('#rtoken').val('CrqkNfpEZezFQdrr4Hpy6voh1cZ5OzSsPw8iy_yPxlQXkcOrkABRw-j1QwrGg_sExDPkh_03MN7XhBEzPUItdA==');
+			$('#rtoken').val('46|6dhiTTMEMeBoC3RfXDpQxzkM76LCwKG9HElvtyYDmcSZNvJE8oqOIsoXhhrKKhzcncOPALm9FZmLVbFqURBjCQ==');
 		
 		});
 	</script>
