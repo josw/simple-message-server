@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.swj.msgr.member.dao.FriendDao">
+
+	<select id="getFriends" resultType="Friend" parameterType="long">
+		select * from member_friend where mid = #{mid}
+		order by crt_dt desc
+		limit #{start}, #{cnt}
+	</select>
+
+	<select id="getFriend" resultType="Friend" parameterType="java.util.Map">
+		select * from member_friend where mid = #{mid} and friend_mid = #{friend_mid}
+	</select>
+	
+	<insert id="addFriend" parameterType="java.util.Map">
+		insert into member_friend (mid, friend_mid, crt_dt)
+		values (#{mid}, #{friend_mid}, current_timestamp)
+	</insert>
+	
+	<delete id="deleteFriend" parameterType="Friend">
+		delete from member_friend where mid=#{mid} and friend_mid = #{friend_mid}
+	</delete>
+	
+</mapper>
