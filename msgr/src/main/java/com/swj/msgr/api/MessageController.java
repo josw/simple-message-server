@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.swj.msgr.api.model.Login;
 import com.swj.msgr.api.resolver.LoginParam;
+import com.swj.msgr.commons.exception.RequestException;
+import com.swj.msgr.commons.model.ErrorCode;
 import com.swj.msgr.member.exception.MemberNotExistException;
 import com.swj.msgr.member.model.Member;
 import com.swj.msgr.member.service.MemberService;
@@ -87,6 +89,9 @@ public class MessageController {
 		Member toMember = memberService.getMember(toMemberId);
 		if (toMember == null)
 			throw new MemberNotExistException();
+		
+		if (login.getMember().getMid() == toMemberId)
+			throw new RequestException(ErrorCode.FAIL_TARGET_MEMBER_IS_YOU);
 		
 		if (rid != null && isRoomMember(login.getMember().getMid(), rid)){
 			if (!isRoomMember(toMemberId, rid))
