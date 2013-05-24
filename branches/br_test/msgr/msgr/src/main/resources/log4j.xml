@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+	<appender name="FlatFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+<!--         <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+ -->
+        <param name="file" value="/Users/josw/mylogfile.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m\n" />
+        </layout>
+        
+            <!-- 
+        		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="FATAL" />
+			<param name="AcceptOnMatch" value="false" />
+		</filter>
+		
+		         --> 
+   
+        <filter class="org.apache.log4j.varia.LevelMatchFilter">
+        	<param name="LevelToMatch" value="ERROR" />
+        	<param name="AcceptOnMatch" value="true" />
+        </filter>
+        
+
+	</appender>
+
+	<!-- # LEVEL : ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF -->
+	<appender name="CONSOLE.ERR" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss}]%p - %C{1}.%M(%L) | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="FATAL" />
+			<param name="AcceptOnMatch" value="false" />
+		</filter>
+	</appender>
+	<appender name="CONSOLE.OUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss}]%p - %C{1}.%M(%L) | %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="INFO" />
+			<param name="AcceptOnMatch" value="false" />
+		</filter>
+	</appender>
+	
+
+	
+	<logger name="org.springframework">
+		<level value="WARN" />
+	</logger>
+	
+	<logger name="org.apache.ibatis">
+		<level value="DEBUG" />
+	</logger>
+
+	<logger name="org.mybatis.spring">
+		<level value="DEBUG" />
+	</logger>
+
+
+	<logger name="net.sf.json">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="java.sql.Connection">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Statement">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.PreparedStatement">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Resultset">
+		<level value="DEBUG" />
+	</logger>
+
+
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="FlatFileAppender" />
+		<appender-ref ref="CONSOLE.ERR" />
+		<appender-ref ref="CONSOLE.OUT" />
+		
+	</root>
+</log4j:configuration>

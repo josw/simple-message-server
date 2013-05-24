@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.swj.msgr.member.model.Member" alias="Member"/>
+		<typeAlias type="com.swj.msgr.member.model.Friend" alias="Friend"/>
+		<typeAlias type="com.swj.msgr.app.model.App" alias="App"/>
+		<typeAlias type="com.swj.msgr.message.model.Message" alias="Message"/>
+		<typeAlias type="com.swj.msgr.message.model.Room" alias="Room"/>
+		<typeAlias type="com.swj.msgr.message.model.RoomMember" alias="RoomMember"/>
+	</typeAliases>
+
+<!-- 
+	<mappers>
+		<mapper resource="mybatis/mapper/ProductDao.xml" />
+		<mapper resource="mybatis/mapper/ChatItemDao.xml" />
+		<mapper resource="mybatis/mapper/MemberDao.xml" />
+	</mappers>
+ -->
+	
+</configuration>
