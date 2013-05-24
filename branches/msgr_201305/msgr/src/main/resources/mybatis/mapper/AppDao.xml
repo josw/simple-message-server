@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.swj.msgr.app.dao.AppDao">
+	<select id="getApps" resultType="App">
+		select * from app
+	</select>
+	
+	<insert id="insertApp" parameterType="App">
+		insert into app (desc, crt_dt)
+		values (#{desc}, current_timestamp)
+		<selectKey resultType="long">
+			select last_insert_id();
+		</selectKey>
+	</insert>
+
+</mapper>
